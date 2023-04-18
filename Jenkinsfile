@@ -51,7 +51,7 @@ stage("Deploy to Production") {
                 success{
                  mail to: "jeremysconway@hotmail.com",
                  subject: "Build Status Email",
-                 body: "Build was Successful!" 
+                 body: "Build was Successful!!!" 
                  
                 }
             }

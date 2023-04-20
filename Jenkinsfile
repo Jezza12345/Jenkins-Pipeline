@@ -18,12 +18,13 @@ pipeline {
         steps {
                 echo "running unit tests using the JUnit tool to ensure the code functions as expected and running integration tests using the TestComplete tool to ensure the different components of the application work together as expected"
         }
+		post {
 		success{
 			mail to: "jeremysconway@hotmail.com",
             subject: "Unit and Integration Testing Successfully Completed",
-            body: "Unit and Integration Testing Successfully Completed!!!" 
-                 
+            body: "Unit and Integration Testing Successfully Completed!!!"         
                 }
+		}
 		}
 	stage("Code Analysis") {
         steps {

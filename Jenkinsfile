@@ -24,6 +24,11 @@ pipeline {
             subject: "Unit and Integration Testing Successfully Completed",
             body: "Unit and Integration Testing Successfully Completed!!!"         
                 }
+		failure{
+			mail to: "jeremysconway@hotmail.com",
+            subject: "Unit and Integration Testing Failed",
+            body: "Unit and Integration Testing Failed!!!"         
+               }
 		}
 		}
 	stage("Code Analysis") {

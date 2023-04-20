@@ -20,11 +20,9 @@ pipeline {
         }
 		post {
 		success{
-			
 			mail to: "jeremysconway@hotmail.com",
             subject: "Unit and Integration Testing Successfully Completed",
-            body: ${BUILD_LOG, maxLines=9999, escapeHtml=false} 
-						
+            body: "Unit and Integration Testing Successfully Completed!!!" 			
                 }
 		failure{
 			mail to: "jeremysconway@hotmail.com",

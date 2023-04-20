@@ -23,7 +23,7 @@ pipeline {
 			mail to: "jeremysconway@hotmail.com",
             subject: "Unit and Integration Testing Successfully Completed",
             body: "Unit and Integration Testing Successfully Completed!!!" 
-			attachLog: true			
+			emailext attachLog: true			
                 }
 		failure{
 			mail to: "jeremysconway@hotmail.com",

@@ -40,6 +40,18 @@ pipeline {
         steps {
                 echo "Performing a security scan on the code using the Tenable Nessus tool to identify any vulnerabilities"
         }
+		post {
+		success{
+			mail to: "jeremysconway@hotmail.com",
+            subject: "Security Scaning Successfully Completed",
+            body: "Security Scaning Successfully Completed!!!"         
+                }
+		failure{
+			mail to: "jeremysconway@hotmail.com",
+            subject: "Security Scaning Failed",
+            body: "Security Scaning Testing Failed!!!"         
+               }
+		}
 		}	
 	stage("Deploy to Staging") {
         steps {
@@ -55,14 +67,6 @@ pipeline {
         steps {
                 echo "Deploying the application to a AWS EC3 production instance using AWS CloudFormation"
         }
-            post{
-                success{
-                 mail to: "jeremysconway@hotmail.com",
-                 subject: "Build Status Email",
-                 body: "Build was Successful!!" 
-                 
-                }
-            }
 		}			
 		}
 }

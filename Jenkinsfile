@@ -1,4 +1,3 @@
--- Added Comment --
 pipeline {
     environment
     {

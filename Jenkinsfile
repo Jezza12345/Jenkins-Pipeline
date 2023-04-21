@@ -1,10 +1,4 @@
 pipeline {
-    environment
-    {
-    DIRECTORY_PATH="C:\\Temp" 
-    TESTING_ENVIRONMENT="TestEnvironment"
-    PRODUCTION_ENVIRONMENT="ProdEnvironment"
-    }
     agent any
     stages
      {

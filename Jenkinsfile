@@ -20,10 +20,8 @@ pipeline {
         }
 		post {
 		success{
-			emailext attachLog: true,
-			mail to: "jeremysconway@hotmail.com",
-            subject: "Unit and Integration Testing Successfully Completed",
-            body: "Unit and Integration Testing Successfully Completed!!!" 			
+			emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
+      			 subject: "Unit and Integration Testing Successful: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'jeremysconway@hotmail.com'			
                 }
 		failure{
 			mail to: "jeremysconway@hotmail.com",

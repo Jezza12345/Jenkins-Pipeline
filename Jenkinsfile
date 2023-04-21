@@ -11,7 +11,7 @@ pipeline {
      stage("Build") {
         steps {
                 echo "This is the Build stage"
-                echo "- Build the code using the Maven tool to compile and package your code"
+                echo "Build the code using the Maven tool to compile and package the code"
         }
 		}
     stage("Unit and Integration Tests") {
@@ -20,19 +20,18 @@ pipeline {
         }
 		post {
 		success{
-			emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
+				 emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
       			 subject: "Unit and Integration Testing Successful: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'jeremysconway@hotmail.com'			
                 }
 		failure{
-			mail to: "jeremysconway@hotmail.com",
-            subject: "Unit and Integration Testing Failed",
-            body: "Unit and Integration Testing Failed!!!"         
+				 emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
+      			 subject: "Unit and Integration Testing Failed: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'jeremysconway@hotmail.com'	       
                }
 		}
 		}
 	stage("Code Analysis") {
         steps {
-                echo "The Code Analysis Tool Codacy has been integrated to analyse the code and ensure it meets industry standards "
+                echo "The Code Analysis Tool Codacy has been integrated to analyse the code and ensure the code meets industry standards "
         }
 		}
 	stage("Security Scan") {
@@ -41,14 +40,12 @@ pipeline {
         }
 		post {
 		success{
-			mail to: "jeremysconway@hotmail.com",
-            subject: "Security Scaning Successfully Completed",
-            body: "Security Scaning Successfully Completed!!!"         
+				 emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
+      			 subject: "Security Scan Testing Successful: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'jeremysconway@hotmail.com'	        
                 }
 		failure{
-			mail to: "jeremysconway@hotmail.com",
-            subject: "Security Scaning Failed",
-            body: "Security Scaning Testing Failed!!!"         
+				 emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'jeremysconway@gmail.com',
+      			 subject: "Security Scan Testing Failed: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'jeremysconway@hotmail.com'	        
                }
 		}
 		}	
